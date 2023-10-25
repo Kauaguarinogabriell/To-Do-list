@@ -1,36 +1,82 @@
-const inputTask = document.querySelector("#input-task");
+const InputTaskName = document.querySelector("#input-task");
 const list = document.querySelector("#list");
-const listdo = document.querySelector("#listdo")
+const listdo = document.getElementById("listdo")
+
+function CreateItemAndAddId(element, atribut, elementClass, conteudo){
+    this.item = element
+    this.classe = elementClass
+    this.content = conteudo
+    const NewObject = document.createElement(element)
+    NewObject.setAttribute(atribut, elementClass)
+    NewObject.innerHTML = conteudo
+    return NewObject
+}
+
+
 function addelement () {
-    const taskname = inputTask.value;
+    const taskname = InputTaskName.value;
     if(taskname != 0) {
-        const newtask = document.createElement("li")
-        newtask.setAttribute("id", "task")
-        const check = document.createElement("input")
-        check.setAttribute("type", "checkbox")
-        check.setAttribute("id", "checkbox")
+        const litask = new CreateItemAndAddId("li", "class", "containertask", "")
+        const check = new CreateItemAndAddId("input", "class", "checkbox", "")
+        const newtask = new CreateItemAndAddId("div", "class", "task", "")
+        const divtext = new CreateItemAndAddId("div", "null", "", taskname)
+        list.appendChild(litask)
         newtask.appendChild(check)
-        const divtext = document.createElement("div")
+        check.setAttribute("type", "checkbox")
         newtask.appendChild(divtext)
-        divtext.innerText = taskname
-        list.appendChild(newtask);
-        inputTask.value = ''
+        litask.appendChild(newtask)
+        InputTaskName.value = ''
+
         let arraylist = [list]
         arraylist.forEach(() => {
-            const div = document.createElement("div")
-            div.setAttribute("id", "buttons")
+            const div = new CreateItemAndAddId("div", "class", "buttons", "")
+            const addsubtask = new CreateItemAndAddId("img", "src", "/imagens/plus-circle.svg", "")
+            const remove = new CreateItemAndAddId("img", "src", "/imagens/trash.svg", "")
             newtask.appendChild(div);
-            const addsubtask = document.createElement("img")
-            addsubtask.setAttribute("src", "/imagens/plus-circle.svg")
             div.appendChild(addsubtask)
-            const remove = document.createElement("img")
-            remove.setAttribute("src", "/imagens/trash.svg");
             div.appendChild(remove);
+            const divSubList = new CreateItemAndAddId("div", "class", "divsubtask", "")
+            litask.appendChild(divSubList)
+            const InputSubTask = new CreateItemAndAddId("input", "class", "Inputelementsubtask", "")
+            divSubList.appendChild(InputSubTask)
+
+            function AddNewSubTask() {
+                const sublist = document.querySelector(".sublist")
+                const verify = InputSubTask.value
+
+                function CreateSubTask() {
+                    if (verify != 0) {
+                        const Namesubtaskvalue = InputSubTask.value 
+                        const SubTask = new CreateItemAndAddId("li", "class", "subtask", Namesubtaskvalue)
+                        InputSubTask.value = ''
+                        sublist.appendChild(SubTask)
+                    } else {
+                        console.log("digite algo")
+                    }
+                }
+
+                if(sublist == null) {
+                    const createSublist = new CreateItemAndAddId("ul", "class", "sublist", "")
+                    divSubList.appendChild(createSublist)
+                    CreateSubTask()
+                } else {
+                    CreateSubTask()
+                }
+            }
+
+            InputSubTask.addEventListener("keypress", (event) => {
+                if (event.key === 'Enter') {
+                    AddNewSubTask()
+                }
+            })
+
+
             remove.addEventListener("click", () => {
-                list.removeChild(newtask)
+                list.removeChild(litask)
             })
             check.addEventListener("click", () => {
                 newtask.style.textDecoration = "line-through"
+                list.removeChild(litask)
                 listdo.appendChild(newtask)
             })
         });
@@ -38,7 +84,21 @@ function addelement () {
         alert("digite algo")
     }
 }
-inputTask.addEventListener("keypress", (event) => {
+
+const ButtonArrowRight = document.querySelector("#seta")
+const testelist = listdo.getElementById = ("ativo")
+ButtonArrowRight.addEventListener("click", () => {
+    if(testelist == false){
+        ButtonArrowRight.setAttribute("src", "/imagens/caret-down.svg")
+        listdo.setAttribute("id", "ativo")
+    } else {
+        ButtonArrowRight.setAttribute("src", "/imagens/caret-right.svg")
+        listdo.setAttribute("id", "listdo")
+    }
+
+})
+
+InputTaskName.addEventListener("keypress", (event) => {
     if (event.key === 'Enter') {
         addelement()
     }
