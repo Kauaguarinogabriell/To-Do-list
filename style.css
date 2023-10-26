@@ -81,10 +81,10 @@ img{
     width: 100%;
     display: block;
 }
-#listdo{
+.desativado{
     display: none;
 }
-#listdoativo{
+.ativo{
     display: flex;
     flex-direction: column;
 }

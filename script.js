@@ -26,7 +26,6 @@ function addelement () {
         newtask.appendChild(divtext)
         litask.appendChild(newtask)
         InputTaskName.value = ''
-
         let arraylist = [list]
         arraylist.forEach(() => {
             const div = new CreateItemAndAddId("div", "class", "buttons", "")
@@ -39,11 +38,9 @@ function addelement () {
             litask.appendChild(divSubList)
             const InputSubTask = new CreateItemAndAddId("input", "class", "Inputelementsubtask", "")
             divSubList.appendChild(InputSubTask)
-
             function AddNewSubTask() {
                 const sublist = document.querySelector(".sublist")
                 const verify = InputSubTask.value
-
                 function CreateSubTask() {
                     if (verify != 0) {
                         const Namesubtaskvalue = InputSubTask.value 
@@ -54,7 +51,6 @@ function addelement () {
                         console.log("digite algo")
                     }
                 }
-
                 if(sublist == null) {
                     const createSublist = new CreateItemAndAddId("ul", "class", "sublist", "")
                     divSubList.appendChild(createSublist)
@@ -63,14 +59,11 @@ function addelement () {
                     CreateSubTask()
                 }
             }
-
             InputSubTask.addEventListener("keypress", (event) => {
                 if (event.key === 'Enter') {
                     AddNewSubTask()
                 }
             })
-
-
             remove.addEventListener("click", () => {
                 list.removeChild(litask)
             })
@@ -84,18 +77,17 @@ function addelement () {
         alert("digite algo")
     }
 }
-
-const ButtonArrowRight = document.querySelector("#seta")
-const testelist = listdo.getElementById = ("ativo")
-ButtonArrowRight.addEventListener("click", () => {
-    if(testelist == false){
-        ButtonArrowRight.setAttribute("src", "/imagens/caret-down.svg")
-        listdo.setAttribute("id", "ativo")
+const FaqListArrow = document.querySelector("#FAQ")
+FaqListArrow.addEventListener("click", () => {
+    if(FaqListArrow.classList == "ativo"){
+        FaqListArrow.setAttribute("src", "/imagens/caret-down.svg")
+        listdo.classList = "desativado"
+        FaqListArrow.classList = "null"
     } else {
-        ButtonArrowRight.setAttribute("src", "/imagens/caret-right.svg")
-        listdo.setAttribute("id", "listdo")
+        FaqListArrow.classList = "ativo"
+        listdo.classList = "ativo"
+        FaqListArrow.setAttribute("src", "/imagens/caret-right.svg")
     }
-
 })
 
 InputTaskName.addEventListener("keypress", (event) => {
