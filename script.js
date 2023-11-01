@@ -1,5 +1,6 @@
-const InputTaskName = document.querySelector("#input-task");
-const list = document.querySelector("#list");
+const InputTaskName = document.getElementById("input-task");
+const list = document.getElementById("list");
+let arraylist = [list]
 const listdo = document.getElementById("listdo")
 
 function CreateItemAndAddId(element, atribut, elementClass, conteudo){
@@ -12,8 +13,7 @@ function CreateItemAndAddId(element, atribut, elementClass, conteudo){
     return NewObject
 }
 
-
-function addelement () {
+function addelement() {
     const taskname = InputTaskName.value;
     if(taskname != 0) {
         const litask = new CreateItemAndAddId("li", "class", "containertask", "")
@@ -26,55 +26,19 @@ function addelement () {
         newtask.appendChild(divtext)
         litask.appendChild(newtask)
         InputTaskName.value = ''
-        let arraylist = [list]
+
         arraylist.forEach(() => {
             const div = new CreateItemAndAddId("div", "class", "buttons", "")
-            const addsubtask = new CreateItemAndAddId("img", "src", "/imagens/plus-circle.svg", "")
             const remove = new CreateItemAndAddId("img", "src", "/imagens/trash.svg", "")
             newtask.appendChild(div);
-            div.appendChild(addsubtask)
             div.appendChild(remove);
-            const divSubList = new CreateItemAndAddId("div", "class", "divsubtask", "")
-            litask.appendChild(divSubList)
-            const InputSubTask = new CreateItemAndAddId("input", "class", "Inputelementsubtask", "")
-            divSubList.appendChild(InputSubTask)
-            function AddNewSubTask() {
-                const sublist = document.querySelector(".sublist")
-                const verify = InputSubTask.value
-                function CreateSubTask() {
-                    if (verify != 0) {
-                        const Namesubtaskvalue = InputSubTask.value 
-                        const SubTask = new CreateItemAndAddId("li", "class", "subtask", Namesubtaskvalue)
-                        InputSubTask.value = ''
-                        sublist.appendChild(SubTask)
-                    } else {
-                        console.log("digite algo")
-                    }
-                }
-                if(sublist == null) {
-                    const createSublist = new CreateItemAndAddId("ul", "class", "sublist", "")
-                    divSubList.appendChild(createSublist)
-                    CreateSubTask()
-                } else {
-                    CreateSubTask()
-                }
-            }
-            InputSubTask.addEventListener("keypress", (event) => {
-                if (event.key === 'Enter') {
-                    AddNewSubTask()
-                }
-            })
             remove.addEventListener("click", () => {
                 list.removeChild(litask)
             })
             check.addEventListener("click", () => {
-                newtask.style.textDecoration = "line-through"
-                list.removeChild(litask)
                 listdo.appendChild(newtask)
             })
-        });
-    } else {
-        alert("digite algo")
+        })
     }
 }
 const FaqListArrow = document.querySelector("#FAQ")
@@ -89,7 +53,6 @@ FaqListArrow.addEventListener("click", () => {
         FaqListArrow.setAttribute("src", "/imagens/caret-right.svg")
     }
 })
-
 InputTaskName.addEventListener("keypress", (event) => {
     if (event.key === 'Enter') {
         addelement()

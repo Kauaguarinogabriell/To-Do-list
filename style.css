@@ -67,6 +67,9 @@ img{
 #listdo .checkbox{
     pointer-events: none;
 }
+#listdo .task{
+    opacity: 70%;
+}
 #sublist{
     margin-left: 1rem;
 }
