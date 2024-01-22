@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-do List</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <section>
-        <input id="input-task" type="text" autocomplete="off" placeholder="Task" maxlength="23">
-        <div class="lists">
-            <ul id="list">
-                
-            </ul>
 
-            <div class="div-list-do">
-                <div><img id="FAQ" src="imagens/caret-down.svg" alt=""><h2 class="title-do">completed</h2></div>
-                <ul id="listdo" class="desativado">
-                    
-                </ul>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section>
+    <input id="Input-Task" type="text" autocomplete="off" placeholder="Task" maxlength="19" />
+    <div class="Lists">
+      <ul id="List-Tasks"></ul>
+      <div class="Div-List-Do">
+        <div>
+          <img id="FAQ" src="imagens/caret-down.svg" alt="" />
+          <h2 class="Title-Do">completed</h2>
         </div>
-    </section>
-    <script src="script.js"></script>
+        <ul id="List-Do"></ul>
+      </div>
+    </div>
+  </section>
+  <script src="script.js"></script>
 </body>
+
 </html>

@@ -17,77 +17,81 @@ ul{
     padding: 0;
     margin-top: 1rem;
 }
-.task{
-    display: flex;
-    font-size: 1.3rem;
-    padding: .7rem .5rem;
-    align-items: center;
-    gap: .7rem;
-    margin-bottom: .3rem;
-    border-radius: 3px;
-    background-color: rgb(86, 113, 114);
-    max-width: 100%;
-}
-#input-task{
+#Input-Task{
     font-size: 1.5rem;
     padding: 0rem 0rem 0rem .5rem;
     border: 0rem;
     border-bottom: 1px solid black;
     outline: 0px;
 }
-.buttons{
-    opacity: 0;
-    gap: .5rem;
+.Task{
     display: flex;
-    flex: 1;
-    justify-content: end;
+    font-size: 1.3rem;
+    padding: .7rem .5rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: .7rem;
+    margin-bottom: .3rem;
+    border-radius: 3px;
+    background-color: #f3f4e5;
+    max-width: 100%;
 }
-li:hover .buttons{
+.DivLayout{
+    display: flex;
+    gap: .7rem;
+}
+.Buttons{
+    display: flex;
+    align-items: center;
+    opacity: 0;
+}
+li:hover .Buttons{
     opacity: 100;
+    transition-duration: 150ms;
 }
 img{
     padding: .2rem;
     border-radius: 100%;
 }
-.lists{
+.Lists{
     display: flex;
     flex-direction: column;
     height: 100%;
     gap: 1rem;
 }
-#listdo{
+#List-Tasks{
+    height: 35vh;
     overflow: auto;
 }
-#listdo li{
+#List-Tasks::-webkit-scrollbar{
+    background-color: #ffffff;
+}
+#List-Tasks::-webkit-scrollbar{
+    width: .7rem;
+}
+#List-Tasks::-webkit-scrollbar-thumb{
+    background-color: #a1c1be;
+}
+#List-Do{
+    height: 35vh;
+    overflow: auto;
+}
+#List-Do li{
     opacity: 60%;
 }
-#listdo li .buttons{
+#List-Do li .buttons{
     display: none;
 }
-#listdo .checkbox{
+#List-Do .checkbox{
     pointer-events: none;
 }
-#listdo .task{
+#List-Do .task{
     opacity: 70%;
 }
-#sublist{
-    margin-left: 1rem;
-}
-.title-do{
+.Title-Do{
     font-size: 1rem;
 }
-.div-list-do div{
+.Div-List-Do div{
     display: flex;
     align-items: center;
-}
-#divsubelement{
-    width: 100%;
-    display: block;
-}
-.desativado{
-    display: none;
-}
-.ativo{
-    display: flex;
-    flex-direction: column;
 }
